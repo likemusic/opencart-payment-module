@@ -1,3 +1,3 @@
 all :
-	if [[ -e opencart-payment-module.ocmod.zip ]]; then rm opencart-payment-module.ocmod.zip; fi
-	zip -r opencart-payment-module.ocmod.zip upload install.xml
+	if [[ -e opencart-begateway-payment-module.ocmod.zip ]]; then rm opencart-begateway-payment-module.ocmod.zip; fi
+	zip -r opencart-begateway-payment-module.ocmod.zip upload install.xml
