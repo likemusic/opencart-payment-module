@@ -167,7 +167,7 @@ class ControllerPaymentBegateway extends Controller {
       if(isset($status) && $status == 'successful'){
         $this->model_checkout_order->addOrderHistory($order_id, $this->config->get('begateway_completed_status_id'), "UID: $transaction_id. $three_d Processor message: $transaction_message", true);
       }
-      if(isset($status) && ($status == 'failed'|| $status == 'incomplete' )){
+      if(isset($status) && ($status == 'failed')){
         $this->model_checkout_order->addOrderHistory($order_id, $this->config->get('begateway_failed_status_id'), "UID: $transaction_id. Fail reason: $transaction_message", true);
       }
     }
