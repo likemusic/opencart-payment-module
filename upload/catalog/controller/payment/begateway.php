@@ -41,7 +41,7 @@ class ControllerPaymentBegateway extends Controller {
 
     $order_array = array ( 'currency'=> $order_info['currency_code'],
       'amount' => $orderAmount,
-      'description' => 'Order # '.$order_info['order_id'],
+      'description' => $this->language->get('text_order'). ' ' .$order_info['order_id'],
       'tracking_id' => $order_info['order_id']);
 
     $callback_url = $this->url->link('payment/begateway/callback1', '', 'SSL');
