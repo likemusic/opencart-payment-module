@@ -15,7 +15,7 @@ class ControllerPaymentBegateway extends Controller {
     } else {
       $this->template = 'default/template/payment/begateway.tpl';
     }
-    $this->render();
+    $this->response->setOutput($this->render());
   }
 
   public function generateToken(){
@@ -41,14 +41,14 @@ class ControllerPaymentBegateway extends Controller {
       if (strlen($v) == 0)
         unset($customer_array[$k]);
     }
-    
+
     if (in_array($order_info['payment_iso_code_2'], array('US','CA'))) {
       $customer_array['state'] = $order_info['payment_zone_code'];
     }
 
     $order_array = array ( 'currency'=> $order_info['currency_code'],
       'amount' => $orderAmount,
-      'description' => 'Order # '.$order_info['order_id'],
+      'description' => $this->language->get('text_order') . ' ' .$order_info['order_id'],
       'tracking_id' => $order_info['order_id']);
 
     $callback_url = $this->url->link('payment/begateway/callback1', '', 'SSL');
