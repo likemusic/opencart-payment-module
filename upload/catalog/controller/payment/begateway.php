@@ -23,7 +23,7 @@ class ControllerPaymentBegateway extends Controller {
     $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
     $orderAmount = $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false);
     $orderAmount = (float)$orderAmount * pow(10,(int)$this->currency->getDecimalPlace($order_info['currency_code']));
-    $orderAmount = (int)$orderAmount;
+    $orderAmount = intval(strval($orderAmount));
 
     $customer_array =  array ( 'address' => $order_info['payment_address_1'],
       'first_name' => $order_info['payment_firstname'],
