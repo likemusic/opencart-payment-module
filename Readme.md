@@ -2,6 +2,8 @@
 
 [Русская версия](#Модуль-оплаты-opencart)
 
+[Click here](https://github.com/beGateway/opencart-payment-module/tree/opencart-1.5) for the module version for OpenCart 1.5.x
+
 ### Installation
 
 * Backup your webstore and database
@@ -49,11 +51,13 @@ Use the test data to make a test payment:
 
 ### Contributing
 
-Issue pull requests or send feature requests.
+Issue pull requests or send feature requests or open [a new issue]( https://github.com/beGateway/opencart-payment-module/issues/new)
 
 ## Модуль оплаты OpenCart
 
 [English version](#opencart-payment-module)
+
+Перейдите [сюда](https://github.com/beGateway/opencart-payment-module/tree/opencart-1.5) если вам нужна версия модуля для OpenCart 1.5.x
 
 ### Установка
 
@@ -102,4 +106,4 @@ Issue pull requests or send feature requests.
 
 ## Нашли ошибку или у вас есть предложение по улучшению модуля?
 
-Создайте [запрос](https://github.com/beGateway/hostcms-payment-module/issues/new)
+Создайте [запрос](https://github.com/beGateway/opencart-payment-module/issues/new)
