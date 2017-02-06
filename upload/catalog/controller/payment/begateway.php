@@ -1,19 +1,21 @@
 <?php
 class ControllerPaymentBegateway extends Controller {
+  const API_VERSION = 2;
+
   public function index() {
     $this->language->load('payment/begateway');
     $this->load->model('checkout/order');
 
-    $data['action'] = 'https://' . $this->config->get('begateway_domain_payment_page') . '/checkout';
+    $data['action'] = 'https://' . $this->config->get('begateway_domain_payment_page') . '/v' . self::API_VERSION . '/checkout';
     $data['button_confirm'] = $this->language->get('button_confirm');
     $data['token'] = $this->generateToken();
     $data['token_error'] = $this->language->get('token_error');
     $data['order_id'] = $this->session->data['order_id'];
 
-    if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/begateway.tpl')) {
-      return $this->load->view($this->config->get('config_template') . '/template/payment/begateway.tpl', $data);
+    if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . 'payment/begateway.tpl')) {
+      return $this->load->view($this->config->get('config_template') . 'payment/begateway.tpl', $data);
     } else {
-      return $this->load->view('default/template/payment/begateway.tpl', $data);
+      return $this->load->view('payment/begateway.tpl', $data);
     }
   }
 
@@ -40,6 +42,7 @@ class ControllerPaymentBegateway extends Controller {
     }
 
     $order_array = array ( 'currency'=> $order_info['currency_code'],
+      'version' => self::API_VERSION,
       'amount' => $orderAmount,
       'description' => $this->language->get('text_order'). ' ' .$order_info['order_id'],
       'tracking_id' => $order_info['order_id']);
@@ -174,7 +177,7 @@ class ControllerPaymentBegateway extends Controller {
   }
 
   private function _language($lang_id) {
-    $languages = array('en','ru','es','fr','it','zh','de','tr');
+    $languages = array('en', 'ru', 'es', 'fr', 'it', 'zh', 'de', 'tr', 'da', 'sv', 'no', 'fi', 'pl');
 
     if (in_array($lang_id, $languages)) {
       return $lang_id;
