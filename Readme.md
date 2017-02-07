@@ -106,4 +106,4 @@ Issue pull requests or send feature requests.
 
 ## Нашли ошибку или у вас есть предложение по улучшению модуля?
 
-Создайте [запрос](https://github.com/beGateway/hostcms-payment-module/issues/new)
+Создайте [запрос](https://github.com/beGateway/opencart-payment-module/issues/new)
