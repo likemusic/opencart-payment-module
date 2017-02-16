@@ -1,10 +1,12 @@
 <?php
 class ControllerPaymentBegateway extends Controller {
+  const API_VERSION = 2;
+
   public function index() {
     $this->language->load('payment/begateway');
     $this->load->model('checkout/order');
 
-    $this->data['action'] = 'https://' . $this->config->get('begateway_domain_payment_page') . '/checkout';
+    $this->data['action'] = 'https://' . $this->config->get('begateway_domain_payment_page') . '/v' . self::API_VERSION . '/checkout';
     $this->data['button_confirm'] = $this->language->get('button_confirm');
     $this->data['token'] = $this->generateToken();
     $this->data['token_error'] = $this->language->get('token_error');
@@ -47,6 +49,7 @@ class ControllerPaymentBegateway extends Controller {
     }
 
     $order_array = array ( 'currency'=> $order_info['currency_code'],
+      'version' => self::API_VERSION,
       'amount' => $orderAmount,
       'description' => $this->language->get('text_order') . ' ' .$order_info['order_id'],
       'tracking_id' => $order_info['order_id']);
