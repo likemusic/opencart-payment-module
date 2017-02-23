@@ -27,15 +27,17 @@ class ControllerPaymentBegateway extends Controller {
     $orderAmount = (float)$orderAmount * pow(10,(int)$this->currency->getDecimalPlace($order_info['currency_code']));
     $orderAmount = intval(strval($orderAmount));
 
-    $customer_array =  array ( 'address' => $order_info['payment_address_1'],
-      'first_name' => $order_info['payment_firstname'],
-      'last_name' => $order_info['payment_lastname'],
-      'country' => $order_info['payment_iso_code_2'],
-      'city'=> $order_info['payment_city'],
-      'phone' =>$order_info['telephone'],
-      'email'=> $order_info['email'],
-      'zip' => $order_info['payment_postcode'],
-      'ip' => $this->request->server['REMOTE_ADDR']);
+    $customer_array =  array (
+      'address' => strlen($order_info['payment_address_1']) > 0 ? $order_info['payment_address_1'] : null,
+      'first_name' => strlen($order_info['payment_firstname']) > 0 ? $order_info['payment_firstname'] : null,
+      'last_name' => strlen($order_info['payment_lastname']) > 0 ? $order_info['payment_lastname'] : null,
+      'country' => strlen($order_info['payment_iso_code_2']) > 0 ? $order_info['payment_iso_code_2'] : null,
+      'city'=> strlen($order_info['payment_city']) > 0 ? $order_info['payment_city'] : null,
+      'phone' => strlen($order_info['telephone']) > 0 ? $order_info['telephone'] : null,
+      'email'=> strlen($order_info['email']) > 0 ? $order_info['email'] : null,
+      'zip' => strlen($order_info['payment_postcode']) > 0 ? $order_info['payment_postcode'] : null,
+      'ip' => $this->request->server['REMOTE_ADDR']
+    );
 
     if (in_array($order_info['payment_iso_code_2'], array('US','CA'))) {
       $customer_array['state'] = $order_info['payment_zone_code'];
