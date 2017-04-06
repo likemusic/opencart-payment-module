@@ -1,9 +1,9 @@
 <?php
-class ControllerPaymentBegateway extends Controller {
+class ControllerExtensionPaymentBegateway extends Controller {
   private $error = array();
 
   public function index() {
-    $this->load->language('payment/begateway');
+    $this->load->language('extension/payment/begateway');
 
     $this->document->setTitle($this->language->get('heading_title'));
 
@@ -14,7 +14,7 @@ class ControllerPaymentBegateway extends Controller {
       $this->load->model('setting/setting');
       $this->model_setting_setting->editSetting('begateway', $this->request->post);
       $this->session->data['success'] = $this->language->get('text_success');
-      $this->response->redirect($this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'));
+      $this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=payment', 'SSL'));
     }
 
     $data['heading_title'] = $this->language->get('heading_title');
@@ -89,25 +89,24 @@ class ControllerPaymentBegateway extends Controller {
 
     $data['breadcrumbs'][] = array(
       'text'      => $this->language->get('text_home'),
-      'href'      =>  $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL'),
+      'href'      =>  $this->url->link('common/dashboard', 'token=' . $this->session->data['token'], 'SSL'),
       'separator' => false
     );
 
     $data['breadcrumbs'][] = array(
-      'text'      => $this->language->get('text_payment'),
-      'href'      => $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL'),
-      'separator' => ' :: '
+      'text' => $this->language->get('text_extension'),
+      'href' => $this->url->link('extension/extension', 'token=' . $this->session->data['token'] . '&type=payment', true)
     );
 
     $data['breadcrumbs'][] = array(
       'text'      => $this->language->get('heading_title'),
-      'href'      => $this->url->link('payment/begateway', 'token=' . $this->session->data['token'], 'SSL'),
+      'href'      => $this->url->link('extension/payment/begateway', 'token=' . $this->session->data['token'], 'SSL'),
       'separator' => ' :: '
     );
 
-    $data['action'] = $this->url->link('payment/begateway', 'token=' . $this->session->data['token'], 'SSL');
+    $data['action'] = $this->url->link('extension/payment/begateway', 'token=' . $this->session->data['token'], 'SSL');
 
-    $data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'], 'SSL');
+    $data['cancel'] = $this->url->link('extension/extension', 'token=' . $this->session->data['token']  . '&type=payment', 'SSL');
 
 
     if (isset($this->request->post['begateway_companyid'])) {
@@ -182,7 +181,7 @@ class ControllerPaymentBegateway extends Controller {
   }
 
   private function validate() {
-    if (!$this->user->hasPermission('modify', 'payment/begateway')) {
+    if (!$this->user->hasPermission('modify', 'extension/payment/begateway')) {
       $this->error['warning'] = $this->language->get('error_permission');
     }
 

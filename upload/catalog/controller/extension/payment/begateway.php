@@ -1,9 +1,9 @@
 <?php
-class ControllerPaymentBegateway extends Controller {
+class ControllerExtensionPaymentBegateway extends Controller {
   const API_VERSION = 2;
 
   public function index() {
-    $this->language->load('payment/begateway');
+    $this->language->load('extension/payment/begateway');
     $this->load->model('checkout/order');
 
     $data['action'] = 'https://' . $this->config->get('begateway_domain_payment_page') . '/v' . self::API_VERSION . '/checkout';
@@ -12,10 +12,10 @@ class ControllerPaymentBegateway extends Controller {
     $data['token_error'] = $this->language->get('token_error');
     $data['order_id'] = $this->session->data['order_id'];
 
-    if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . 'payment/begateway.tpl')) {
-      return $this->load->view($this->config->get('config_template') . 'payment/begateway.tpl', $data);
+    if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . 'extension/payment/begateway.tpl')) {
+      return $this->load->view($this->config->get('config_template') . 'extension/payment/begateway.tpl', $data);
     } else {
-      return $this->load->view('payment/begateway.tpl', $data);
+      return $this->load->view('extension/payment/begateway.tpl', $data);
     }
   }
 
@@ -49,10 +49,10 @@ class ControllerPaymentBegateway extends Controller {
       'description' => $this->language->get('text_order'). ' ' .$order_info['order_id'],
       'tracking_id' => $order_info['order_id']);
 
-    $callback_url = $this->url->link('payment/begateway/callback1', '', 'SSL');
+    $callback_url = $this->url->link('extension/payment/begateway/callback1', '', 'SSL');
     $callback_url = str_replace('carts.local', 'webhook.begateway.com:8443', $callback_url);
 
-    $setting_array = array ( 'success_url'=>$this->url->link('payment/begateway/callback', '', 'SSL'),
+    $setting_array = array ( 'success_url'=>$this->url->link('extension/payment/begateway/callback', '', 'SSL'),
       'decline_url'=> $this->url->link('checkout/checkout', '', 'SSL'),
       'cancel_url'=> $this->url->link('checkout/checkout', '', 'SSL'),
       'fail_url'=>$this->url->link('checkout/checkout', '', 'SSL'),
@@ -179,7 +179,7 @@ class ControllerPaymentBegateway extends Controller {
   }
 
   private function _language($lang_id) {
-    $languages = array('en', 'ru', 'es', 'fr', 'it', 'zh', 'de', 'tr', 'da', 'sv', 'no', 'fi', 'pl');
+    $languages = array('en', 'ru', 'es', 'fr', 'it', 'zh', 'de', 'tr', 'da', 'sv', 'no', 'fi', 'pl', 'jp');
 
     if (in_array($lang_id, $languages)) {
       return $lang_id;
