@@ -6,6 +6,7 @@ Versions
 
   * [Click here](https://github.com/beGateway/opencart-payment-module/tree/opencart-1.5) for the module version for OpenCart 1.5.x
   * [Click here](https://github.com/beGateway/opencart-payment-module/tree/opencart-2.0) if you have OpenCart 2.0.x/2.1.x versions
+  * [Click here](https://github.com/beGateway/opencart-payment-module/tree/opencart-2.2) if you have OpenCart 2.2.x versions
 
 ### Installation
 
@@ -24,7 +25,7 @@ Versions
 
 ### Notes
 
-Tested and developed with OpenCart v.2.2.0.0
+Tested and developed with OpenCart v.2.3.0.2
 
 ### Troubleshooting
 
@@ -64,6 +65,7 @@ Issue pull requests or send feature requests or open [a new issue]( https://gith
 
   * Перейдите по [ссылке](https://github.com/beGateway/opencart-payment-module/tree/opencart-1.5) если вам нужна версия модуля для OpenCart 1.5.x
   * Перейдите по [ссылке](https://github.com/beGateway/opencart-payment-module/tree/opencart-2.0) если вам нужна версия модуля для OpenCart 2.0.x/2.1.x
+  * Перейдите по [ссылке](https://github.com/beGateway/opencart-payment-module/tree/opencart-2.2) если вам нужна версия модуля для OpenCart 2.2.x
 
 ### Установка
 
@@ -81,7 +83,7 @@ Issue pull requests or send feature requests or open [a new issue]( https://gith
 
 ### Примечания
 
-Разработано и протестировано с OpenCart v.2.2.0.0
+Разработано и протестировано с OpenCart v.2.3.0.2
 
 Требуется PHP 5+
 

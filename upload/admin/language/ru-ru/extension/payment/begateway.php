@@ -4,7 +4,7 @@ $_['heading_title']          = 'beGateway';
 $_['text_edit']              = 'Изменить настройки';
 
 // Text
-$_['text_payment']        = 'Оплата';
+$_['text_extension']	    = 'Расширения';
 $_['text_success']        = 'Вы успешно изменили настройки модуля';
 $_['text_begateway']      = '<img src="view/image/payment/begateway.png" alt="" title="" style="border: 1px solid #EEEEEE;" />';
 
