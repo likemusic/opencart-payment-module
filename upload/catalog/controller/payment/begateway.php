@@ -183,4 +183,5 @@ class ControllerPaymentBegateway extends Controller {
     $lang = strtolower($lang);
     return $lang;
   }
+}
 ?>
