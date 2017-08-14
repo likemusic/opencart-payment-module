@@ -179,13 +179,8 @@ class ControllerPaymentBegateway extends Controller {
   }
 
   private function _language($lang_id) {
-    $languages = array('en', 'ru', 'es', 'fr', 'it', 'zh', 'de', 'tr', 'da', 'sv', 'no', 'fi', 'pl');
-
-    if (in_array($lang_id, $languages)) {
-      return $lang_id;
-    } else {
-      return 'en';
-    }
+    $lang = substr($lang_id, 0, 2);
+    $lang = strtolower($lang);
+    return $lang;
   }
-}
 ?>
