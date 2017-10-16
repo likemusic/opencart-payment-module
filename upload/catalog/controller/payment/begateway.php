@@ -157,6 +157,7 @@ class ControllerPaymentBegateway extends Controller {
     $transaction_id = $post_array['transaction']['uid'];
     $transaction_message = $post_array['transaction']['message'];
     if (isset($post_array['transaction']['three_d_secure_verification']['pa_status'])) {
+      $three_d = $post_array['transaction']['three_d_secure_verification']['pa_status'];
       $three_d = '3-D Secure: ' . $three_d . '.';
     } else {
       $three_d = '';
